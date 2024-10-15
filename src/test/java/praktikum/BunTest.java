@@ -1,23 +1,48 @@
 package praktikum;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.*;
 
+@RunWith(Parameterized.class)
 public class BunTest {
+
+    private Bun bun;
+    private final String name;
+    private final float price;
+    private final static double DELTA = 0.001f;
+
+    public BunTest(String name, float price){
+        this.name = name;
+        this.price = price;
+    }
+
+    @Before
+    public void setUp(){
+        bun = new Bun(name, price);
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] parameters() {
+        return new Object[][]{
+                {"Тестовая булка", 999.0f},
+                {"Вторая тестовая булка", 1388.0f},
+                {"Тестовая булка", 0.0f},
+                {null, 999.0f},
+                {"Тестовая булка", -999.0f},
+        };
+    }
 
     @Test
     public void getNameTest(){
-        Bun bun = new Bun("Тестовая булка", 1034.0f);
-        String actualName = bun.getName();
-        assertEquals("Название булки не совпадает с ожидаемым значением", "Тестовая булка", actualName);
+        assertEquals("Название булки не совпадает с ожидаемым значением", name, bun.getName());
     }
 
     @Test
     public void getPriceTest(){
-        Bun bun = new Bun("Вторая тестовая булка", 4536.0f);
-        float actualPrice = bun.getPrice();
-        assertEquals("Цена булки не совпадает с ожидаемым значением", 4536.0f, actualPrice, 0.001f);
+        assertEquals("Цена булки не совпадает с ожидаемым значением", price, bun.getPrice(), DELTA);
     }
-
 }

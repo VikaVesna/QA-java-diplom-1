@@ -1,5 +1,6 @@
 package praktikum;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -9,18 +10,23 @@ import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
 @RunWith(Parameterized.class)
-public class IngredientParameterizedTest {
+public class IngredientTest {
 
     private final IngredientType type;
     private final String name;
     private final float price;
-    private final Ingredient ingredient;
+    private Ingredient ingredient;
+    private final static double DELTA = 0.001f;
 
-    public IngredientParameterizedTest(IngredientType type, String name, float price) {
+    public IngredientTest(IngredientType type, String name, float price) {
         this.type = type;
         this.name = name;
         this.price = price;
-        this.ingredient = new Ingredient(type, name, price);
+    }
+
+    @Before
+    public void setUp(){
+        ingredient = new Ingredient(type, name, price);
     }
 
     @Parameterized.Parameters
@@ -35,7 +41,7 @@ public class IngredientParameterizedTest {
 
     @Test
     public void getPriceTest(){
-        assertEquals("Цена ингредиента не совпадает с ожидаемым значением", price, ingredient.getPrice(), 0.001f);
+        assertEquals("Цена ингредиента не совпадает с ожидаемым значением", price, ingredient.getPrice(), DELTA);
     }
 
     @Test
