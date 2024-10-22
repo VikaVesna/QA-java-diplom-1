@@ -44,13 +44,8 @@ public class BurgerTest {
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
 
-        // Проверяем, что в бургере 2 ингредиента
         assertEquals("Количество ингредиентов не верно", 2, burger.ingredients.size());
-
-        // Проверяем, что первый ингредиент - это наш тестовый соус
         assertEquals("Первый ингредиент неверный", ingredient1, burger.ingredients.get(0));
-
-        // Проверяем, что второй ингредиент - это наша тестовая начинка
         assertEquals("Второй ингредиент неверный", ingredient2, burger.ingredients.get(1));
     }
 
@@ -71,6 +66,7 @@ public class BurgerTest {
 
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
+
         burger.moveIngredient(0, 1);
         assertEquals("Первый игредиент должен быть на второй позиции", ingredient2, burger.ingredients.get(0));
         assertEquals("Первый игредиент должен быть на первой позиции", ingredient1, burger.ingredients.get(1));

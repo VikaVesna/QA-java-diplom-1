@@ -32,10 +32,8 @@ public class IngredientTest {
     @Parameterized.Parameters
     public static Object[][] parameters() {
             return new Object[][]{
-                    {SAUCE, "Первый тестовый ингредиент", 999.0f},
-                    {FILLING, "Второй тестовый ингредиент", 1388.0f},
-                    {SAUCE, "Третий тестовый ингредиент", 555.0f},
-                    {FILLING, "Четвертый тестовый ингредиент", 555.0f},
+                    {SAUCE, "Тестовый соус", 999.0f},
+                    {FILLING, "Тестовая начинка", 1388.0f},
             };
     }
 
